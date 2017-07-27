@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const router = express.Router();
+const app = express();
 
 // declare axios for making http requests
 const axios = require('axios');
@@ -18,18 +19,26 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function (err) {
-  if (err) throw err
-  console.log('You are now connected...')
-   connection.query("SELECT * FROM user", function (error, rows, fields) {
-     console.log(rows);
-    // callback function
+  if (err) {
+    console.log('Database connection error');
+  } else {
+    console.log('Database connection successful');
+  }
+});
+
+connection.end(function (err) {
+
+});
+
+app.get('/', function (req, resp) {
+  connection.query("select * from user", function (error, rows, fields) {
     if (!!error) {
-      console.log("error in the querry");
+      console.log('ada error');
     } else {
-      console.log("Successfull querry");
+      console.log('success');
+      console.log(rows);
     }
   });
 });
-
 
 module.exports = router;

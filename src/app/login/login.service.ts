@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoginService {
   constructor(private http: Http) { }
 
-  login(username: string, password: string) {
-    return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+  login(username: String, password: String) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('http://localhost:3000/tes', JSON.stringify({ username: username, password: password }), options)
       .map((response: Response) => {
-        // login successful if there's a jwt token in the response
-        // let user = response.json();
-        // if (user && user.token) {
-        //   // store user details and jwt token in local storage to keep user logged in between page refreshes
-        //   localStorage.setItem('currentUser', JSON.stringify(user));
-        // }
+        return response;
       });
   }
 

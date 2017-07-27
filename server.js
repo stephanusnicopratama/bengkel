@@ -1,41 +1,64 @@
-// Get dependencies
-const express = require('express');
-const path = require('path');
-const http = require('http');
+const express = require('express')
+const mysql = require('mysql')
 const bodyParser = require('body-parser');
+const app = express()
+const router = express.Router()
 
-// Get our API routes
-const api = require('./server/routes/api');
-
-const app = express();
-
-// Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// Set our api routes
-app.use('/api', api);
-
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
-/**
- * Get port from environment and store in Express.
- */
-const port = process.env.PORT || '3000';
-app.set('port', port);
+app.use(bodyParser.json());
 
-/**
- * Create HTTP server.
- */
-const server = http.createServer(app);
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'bengkel'
+});
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+connection.connect(function (err) {
+  if (err) {
+    console.log('Database connection error');
+  } else {
+    console.log('Database connection successful');
+  }
+});
+
+app.get('/', function (req, res) {
+  connection.query('select * from user', function (error, rows, fields) {
+    if (!!error) {
+      console.log('ada error');
+    } else {
+      console.log('success');
+      res.send(rows)
+    }
+  });
+  connection.end()
+})
+
+app.post('/checkUser', function (req, res) {
+  res.send(req);
+
+
+  // connection.query('select * from user where username = ? AND password = ?', function (error, rows, fields) {
+  //   if (!!error) {
+  //     console.log('ada error');
+  //   } else {
+  //     console.log('success');
+  //     res.send(rows)
+  //   }
+  // });
+  // connection.end()
+})
+
+app.post('/tes', function (request, response) {
+  console.log(request.body);      // your JSON
+  response.send(request.body);    // echo the result back
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})

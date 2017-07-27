@@ -6,6 +6,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +27,9 @@ import { LoginComponent } from './login/login.component';
     DataTablesModule,
     RouterModule.forRoot(routes),
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    HttpModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

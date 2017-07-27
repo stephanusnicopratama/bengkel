@@ -3,13 +3,13 @@
     <md-card class="demo-card-blue mat-card-flat">
       <md-card-title>Login Form</md-card-title>
       <md-input-container>
-        <input mdInput placeholder="Username">
+        <input mdInput placeholder="Username" [(ngModel)]="username">
       </md-input-container>
       <md-input-container>
-        <input mdInput placeholder="Password" type="password">
+        <input mdInput placeholder="Password" type="password" [(ngModel)]="password">
       </md-input-container>
       <md-card-actions>
-        <button md-button>Login</button>
+        <button md-button (click)="login()">Login</button>
       </md-card-actions>
     </md-card>
   </div>
