@@ -39,19 +39,19 @@ app.get('/', function (req, res) {
   connection.end()
 })
 
-app.post('/checkUser', function (req, res) {
-  res.send(req);
-
-
-  // connection.query('select * from user where username = ? AND password = ?', function (error, rows, fields) {
-  //   if (!!error) {
-  //     console.log('ada error');
-  //   } else {
-  //     console.log('success');
-  //     res.send(rows)
-  //   }
-  // });
-  // connection.end()
+app.post('/checkUser', function (request, response) {
+  connection.query('select * from user where username = "' + request.body.username + '" AND password = "' + request.body.password + '"', function (error, rows, fields) {
+    if (!!error) {
+      throw error;
+    } else {
+      if (rows.length > 0) {
+        response.send(rows)
+      } else {
+        var status = JSON.stringify({status: 'tidak ditemutkan', data: 0})
+        response.status(200).send(status);
+      }
+    }
+  });
 })
 
 app.post('/tes', function (request, response) {

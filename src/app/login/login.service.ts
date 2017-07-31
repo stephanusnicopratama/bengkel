@@ -9,9 +9,14 @@ export class LoginService {
   login(username: String, password: String) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post('http://localhost:3000/tes', JSON.stringify({ username: username, password: password }), options)
+    return this.http.post('http://localhost:3000/checkUser', JSON.stringify({ username: username, password: password }), options)
       .map((response: Response) => {
-        return response;
+        const user = response.json();
+        if (user) {
+          console.log(user);
+          localStorage.setItem('currentUser', user.username);
+        }
+        return user;
       });
   }
 

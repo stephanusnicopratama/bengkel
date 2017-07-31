@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
-  constructor() { }
+  constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return true;
+    if (localStorage.getItem('currentUser')) {
+      // logged in so return true
+      return true;
+    }
+
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['/Login'], { queryParams: { returnUrl: state.url } });
+    return false;
   }
 }
