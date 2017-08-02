@@ -45,9 +45,10 @@ app.post('/checkUser', function (request, response) {
       throw error;
     } else {
       if (rows.length > 0) {
-        response.send(rows)
+        console.log(rows);
+        response.send({data : rows, status: 200})
       } else {
-        var status = JSON.stringify({status: 'tidak ditemutkan', data: 0})
+        var status = JSON.stringify({data: 'tidak ditemukan', status: 500})
         response.status(200).send(status);
       }
     }

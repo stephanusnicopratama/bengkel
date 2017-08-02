@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule } from '@angular/material';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
 import { routes } from './app.routing';
@@ -33,7 +33,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MdCardModule,
     MdInputModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MdSidenavModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]

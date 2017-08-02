@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   constructor(private http: LoginService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    // reset login status
+    this.http.logout();
+
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Dashboard';
   }
@@ -23,7 +26,12 @@ export class LoginComponent implements OnInit {
   login() {
     return this.http.login(this.username, this.password).subscribe(
       data => {
-        this.router.navigate([this.returnUrl]);
+        console.log(data);
+        if (data) {
+          this.router.navigate([this.returnUrl]);
+        } else {
+
+        }
       },
       error => {
       });

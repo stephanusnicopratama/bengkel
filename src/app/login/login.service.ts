@@ -12,11 +12,12 @@ export class LoginService {
     return this.http.post('http://localhost:3000/checkUser', JSON.stringify({ username: username, password: password }), options)
       .map((response: Response) => {
         const user = response.json();
-        if (user) {
-          console.log(user);
-          localStorage.setItem('currentUser', user.username);
+        if (user.status === 200) {
+          localStorage.setItem('currentUser', user.data[0].username);
+          return true;
+        } else {
+          return false;
         }
-        return user;
       });
   }
 
