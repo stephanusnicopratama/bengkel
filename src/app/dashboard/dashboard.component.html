@@ -1,12 +1,18 @@
-<md-sidenav-container>
-  <md-sidenav #sidenav>
-    Testing
+<md-sidenav-container fullscreen class="sidenav-container">
+  <md-sidenav mode="side" opened="true">
+    <md-toolbar color="primary">
+      <span>Bengkel</span>
+    </md-toolbar>
+    <md-list dense>
+      <a md-list-item routerLink="Home" routerLinkActive="active-link">Home</a>
+      <md-divider></md-divider>
+      <a md-list-item routerLink="ManageUser" routerLinkActive="active-link">Manage User</a>
+      <md-divider></md-divider>
+      <a md-list-item routerLink="/Login">Logout</a>
+    </md-list>
+
   </md-sidenav>
-  <button type="button" md-button (click)="sidenav.open()">
-      Open sidenav
-    </button>
-  <!-- primary content -->
+  <div class="my-content">
+    <router-outlet></router-outlet>
+  </div>
 </md-sidenav-container>
-
-
-<a routerLink="login">Logout</a>

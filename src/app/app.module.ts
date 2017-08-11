@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule } from '@angular/material';
+import {
+  MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule, MdListModule, MdToolbarModule
+} from '@angular/material';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
 import { routes } from './app.routing';
@@ -14,6 +16,8 @@ import { LoginGuard } from './login/login.guard';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ManageUserComponent } from './dashboard/settings/manage-user/manage-user.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 
 @NgModule({
@@ -21,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    ManageUserComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MdInputModule,
     HttpModule,
     FormsModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdListModule,
+    MdToolbarModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]
