@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule, MdListModule, MdToolbarModule
+  MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule, MdListModule, MdToolbarModule, MdChipsModule
 } from '@angular/material';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
@@ -42,7 +42,8 @@ import { HomeComponent } from './dashboard/home/home.component';
     FormsModule,
     MdSidenavModule,
     MdListModule,
-    MdToolbarModule
+    MdToolbarModule,
+    MdChipsModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]

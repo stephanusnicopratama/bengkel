@@ -6,14 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-user.component.css']
 })
 export class ManageUserComponent implements OnInit {
+  data: any;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  tes() {
-    console.log($('#tes').val());
+  tes(tes) {
+    console.log($('#username').val());
+    console.log(tes);
   }
 
 }
