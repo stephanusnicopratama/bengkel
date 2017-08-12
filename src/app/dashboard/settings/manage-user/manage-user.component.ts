@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageUserComponent implements OnInit {
   data: any;
+  users: any = [];
 
   constructor() { }
 
@@ -16,6 +17,10 @@ export class ManageUserComponent implements OnInit {
   tes(tes) {
     console.log($('#username').val());
     console.log(tes);
+  }
+
+  getAllData() {
+
   }
 
 }
