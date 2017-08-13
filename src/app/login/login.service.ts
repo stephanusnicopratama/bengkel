@@ -9,7 +9,7 @@ export class LoginService {
   login(username: String, password: String) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post('http://localhost:3000/checkUser', JSON.stringify({ username: username, password: password }), options)
+    return this.http.post('http://localhost:3000/user/checkuser', JSON.stringify({ username: username, password: password }), options)
       .map((response: Response) => {
         const user = response.json();
         if (user.status === 200) {

@@ -1,4 +1,4 @@
-var express = require('express');
+const express = require('express');
 const mysql = require('mysql');
 
 var router = express.Router();
@@ -18,7 +18,7 @@ connection.connect(function (err) {
   }
 });
 
-router.get('/', function (req, res) {
+router.get('/showalluser', function (req, res) {
   connection.query('select * from user', function (error, rows, fields) {
     if (!!error) {
       console.log('ada error');
@@ -27,11 +27,23 @@ router.get('/', function (req, res) {
       res.send(rows)
     }
   });
-  connection.end()
-});
-router.post('/', function (req, res) {
-  res.send('POST route on things.');
 });
 
+router.post('/checkuser', function (req, res) {
+  connection.query('select * from user where username = "' + req.body.username + '" and password = "' + req.body.password + '"',
+    function (error, rows, fields) {
+      if (!!error) {
+        throw error;
+      } else {
+        if (rows.length > 0) {
+          console.log(rows);
+          res.send({ data: rows, status: 200 })
+        } else {
+          const status = JSON.stringify({ data: '', status: 500 })
+          res.status(200).send(status);
+        }
+      }
+    });
+});
 
 module.exports = router;
