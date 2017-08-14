@@ -3,51 +3,48 @@
   "project": {
     "name": "bengkel"
   },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "styles.css",
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/tether/dist/css/tether.min.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/datatables.net-bootstrap4/dataTables.bootstrap4.min.css",
-        "../node_modules/material-design-lite/material.min.css"
-      ],
-      "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/tether/dist/js/tether.min.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "../node_modules/datatables.net/js/jquery.dataTables.js",
-        "../node_modules/datatables.net-bootstrap4/dataTables.bootstrap4.min.js",
-         "../node_modules/material-design-lite/material.min.js"
-      ],
-      "environmentSource": "environments/environment.ts",
-      "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [
+      "assets",
+      "favicon.ico"
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "polyfills": "polyfills.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.app.json",
+    "testTsconfig": "tsconfig.spec.json",
+    "prefix": "app",
+    "styles": [
+      "styles.css",
+      "../node_modules/material-design-icons/iconfont/material-icons.css",
+      "../node_modules/tether/dist/css/tether.min.css",
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/datatables.net-bootstrap4/dataTables.bootstrap4.min.css",
+      "../node_modules/material-design-lite/material.min.css"
+    ],
+    "scripts": [
+      "../node_modules/jquery/dist/jquery.js",
+      "../node_modules/tether/dist/js/tether.min.js",
+      "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "../node_modules/datatables.net/js/jquery.dataTables.js",
+      "../node_modules/datatables.net-bootstrap4/dataTables.bootstrap4.min.js",
+      "../node_modules/material-design-lite/material.min.js"
+    ],
+    "environmentSource": "environments/environment.ts",
+    "environments": {
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
     }
-  ],
+  }],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [
-    {
+  "lint": [{
       "project": "src/tsconfig.app.json"
     },
     {

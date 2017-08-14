@@ -19,9 +19,9 @@ export class ManageUserComponent implements OnInit {
     this.dtOptions = {
       paging: false,
       destroy: true,
-      scrollY: '50vh',
-      scrollCollapse: true,
-      scrollX: true,
+      // scrollY: '50vh',
+      // scrollCollapse: true,
+      // scrollX: true,
       // columnDefs: [
       //   {
       //     targets: [1, 12, 16],
@@ -42,6 +42,17 @@ export class ManageUserComponent implements OnInit {
       this.users = data;
       this.dtTrigger.next();
       $('#dt').DataTable().destroy();
+    });
+  }
+
+  deleteData(username) {
+    return this.userService.deleteUser(username).subscribe(data => {
+      console.log(data);
+      if (data.data) {
+        $('#dt').DataTable().ajax.reload();
+      } else {
+        alert('data gagal di hapus');
+      }
     });
   }
 
