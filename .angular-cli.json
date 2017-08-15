@@ -23,14 +23,17 @@
       "../node_modules/tether/dist/css/tether.min.css",
       "../node_modules/bootstrap/dist/css/bootstrap.min.css",
       "../node_modules/datatables.net-bootstrap/dataTables.bootstrap.min.css",
-      "../node_modules/material-design-lite/material.min.css"
+      "../node_modules/material-design-lite/material.min.css",
+      "../node_modules/jquery-confirm/dist/jquery-confirm.min.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.js",
+       "../node_modules/tether/dist/js/tether.min.js",
       "../node_modules/bootstrap/dist/js/bootstrap.min.js",
       "../node_modules/datatables.net/js/jquery.dataTables.js",
       "../node_modules/datatables.net-bootstrap/dataTables.bootstrap.min.js",
-      "../node_modules/material-design-lite/material.min.js"
+      "../node_modules/material-design-lite/material.min.js",
+       "../node_modules/jquery-confirm/dist/jquery-confirm.min.js"
     ],
     "environmentSource": "environments/environment.ts",
     "environments": {

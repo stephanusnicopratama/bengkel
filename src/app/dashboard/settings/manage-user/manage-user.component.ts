@@ -3,6 +3,7 @@ import { ManageUserService } from './manage-user.service';
 import { Subject } from 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
+import * as confirm from 'jquery-confirm';
 
 @Component({
   selector: 'app-manage-user',
@@ -46,7 +47,27 @@ export class ManageUserComponent implements OnInit {
   }
 
   deleteData(username) {
-    $('.bs-example-modal-sm').modal('show');
+    // $('#myModal').modal('show');
+    confirm.confirm({
+      title: 'Confirm!',
+      content: 'Simple confirm!',
+      buttons: {
+        confirm: function () {
+          confirm.alert('Confirmed!');
+        },
+        cancel: function () {
+          confirm.alert('Canceled!');
+        },
+        somethingElse: {
+          text: 'Something else',
+          btnClass: 'btn-blue',
+          keys: ['enter', 'shift'],
+          action: function () {
+            confirm.alert('Something else?');
+          }
+        }
+      }
+    });
     // return this.userService.deleteUser(username).subscribe(data => {
     //   console.log(data);
     //   if (data.data) {
