@@ -3,7 +3,6 @@ import { ManageUserService } from './manage-user.service';
 import { Subject } from 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
-import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 @Component({
   selector: 'app-manage-user',
@@ -47,7 +46,7 @@ export class ManageUserComponent implements OnInit {
   }
 
   deleteData(username) {
-    $('#myModal').modal('show');
+    $('.bs-example-modal-sm').modal('show');
     // return this.userService.deleteUser(username).subscribe(data => {
     //   console.log(data);
     //   if (data.data) {

@@ -5,14 +5,12 @@ import {
   MdButtonModule, MdCheckboxModule, MdCardModule, MdInputModule, MdSidenavModule, MdListModule, MdToolbarModule, MdChipsModule,
   MdIconModule, MdDialogModule
 } from '@angular/material';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 import { LoginGuard } from './login/login.guard';
 
@@ -48,9 +46,7 @@ import { HomeComponent } from './dashboard/home/home.component';
     MdToolbarModule,
     MdChipsModule,
     MdIconModule,
-    MdDialogModule,
-    NgbModule.forRoot(),
-    BootstrapModalModule
+    MdDialogModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]
