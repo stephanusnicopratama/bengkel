@@ -1,35 +1,35 @@
 <br>
 <div class="container-fluid">
-  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-    <ngb-panel title="Form Input">
+  <ngb-accordion #acc="ngbAccordion" activeIds="formInput">
+    <ngb-panel title="Form Input" id="formInput">
       <ng-template ngbPanelContent>
         <md-card>
           <form>
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter email">
+              <input type="text" class="form-control" id="username" placeholder="Enter username" required>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password">
+              <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" required>
             </div>
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter name">
+              <input type="text" class="form-control" id="name" placeholder="Enter name" required>
             </div>
             <div class="form-group">
               <label for="selectRole">Role</label>
               <select class="form-control" id="selectRole">
-                    <option value="" selected disabled>Select Role</option>
-                    <option value="1">Admin</option>
-                    <option value="2">User</option>
-                  </select>
+                <option value="" selected disabled>Select Role</option>
+                <option value="1">Admin</option>
+                <option value="2">User</option>
+              </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="insertData()">Submit</button>
           </form>
         </md-card>
       </ng-template>

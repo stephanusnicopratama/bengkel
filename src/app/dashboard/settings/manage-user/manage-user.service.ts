@@ -19,6 +19,12 @@ export class ManageUserService {
   }
 
   insertUser(data: any) {
-
+    const params = JSON.stringify({
+      username: data.username, password: data.password, email: data.email,
+      name: data.name, role: data.role
+    });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('http://localhost:3000/user/insertuser', params, options).map(res => res.json());
   }
 }

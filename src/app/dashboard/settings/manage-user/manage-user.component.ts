@@ -17,6 +17,7 @@ export class ManageUserComponent implements OnInit {
   dtOptions: any = {};
   dtTrigger: Subject<any> = new Subject();
   users: any = [];
+  dataInsert: any = {};
 
   constructor(private userService: ManageUserService, config: NgbAccordionConfig) {
     this.dtOptions = {
@@ -63,8 +64,27 @@ export class ManageUserComponent implements OnInit {
         });
       },
       () => {
+        // gagal hapus
       });
+  }
 
+  insertData(data) {
+    if (($('#selectRole').val() === '') || ($('#selectRole').val() === null)) {
+      alertify.alert('Error', 'Please select role!');
+    } else {
+      this.dataInsert = {
+        username: $('#username').val(), password: $('#password').val(), email: $('#email').val(),
+        name: $('#name').val(), role: $('#selectRole').val()
+      };
+      console.log(this.dataInsert);
+      // tslint:disable-next-line:no-shadowed-variable
+      return this.userService.insertUser(this.dataInsert).subscribe(data => {
+        console.log(data);
+        this.getAllData();
+        $('input').val('');
+        $('#selectRole').val('');
+      });
+    }
   }
 
 }

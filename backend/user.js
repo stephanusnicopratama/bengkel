@@ -50,8 +50,8 @@ router.post('/checkuser', function (req, res) {
 });
 
 router.post('/insertuser', function (req, res) {
-  connection.query('insert into user (username, password, email, nama, role) ' +
-    + 'values ("' + req.body.username + '", "' + req.body.password + '", "' + req.body.email + '", "' + req.body.nama + '", "' + req.body.role + '")',
+  connection.query('insert into user (username, password, email, name, role) ' +
+    'values ("' + req.body.username + '", "' + req.body.password + '", "' + req.body.email + '", "' + req.body.name + '", "' + req.body.role + '")',
     function (error, rows, fields) {
       if (!!error) {
         throw error;
