@@ -11,6 +11,7 @@ import { routes } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginGuard } from './login/login.guard';
 
@@ -46,7 +47,8 @@ import { HomeComponent } from './dashboard/home/home.component';
     MdToolbarModule,
     MdChipsModule,
     MdIconModule,
-    MdDialogModule
+    MdDialogModule,
+    NgbModule,
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]

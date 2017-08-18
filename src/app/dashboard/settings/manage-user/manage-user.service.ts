@@ -17,4 +17,8 @@ export class ManageUserService {
     const options = new RequestOptions({ headers: headers, body: body });
     return this.http.delete('http://localhost:3000/user/deleteuser', options).map(res => res.json());
   }
+
+  insertUser(data: any) {
+
+  }
 }

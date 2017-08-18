@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ManageUserService } from './manage-user.service';
 import { Subject } from 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
-import * as confirm from 'jquery-confirm';
+import * as alertify from 'alertifyjs';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-manage-user',
   templateUrl: './manage-user.component.html',
   styleUrls: ['./manage-user.component.css'],
-  providers: [ManageUserService]
+  providers: [ManageUserService, NgbAccordionConfig],
+  encapsulation: ViewEncapsulation.None
 })
 export class ManageUserComponent implements OnInit {
   dtOptions: any = {};
   dtTrigger: Subject<any> = new Subject();
   users: any = [];
 
-  constructor(private userService: ManageUserService) {
+  constructor(private userService: ManageUserService, config: NgbAccordionConfig) {
     this.dtOptions = {
       paging: false,
       destroy: true,
@@ -32,6 +34,8 @@ export class ManageUserComponent implements OnInit {
       // ],
       dom: 'Bfrtip'
     };
+    config.closeOthers = true;
+    config.type = 'info';
   }
 
   ngOnInit() {
@@ -47,35 +51,20 @@ export class ManageUserComponent implements OnInit {
   }
 
   deleteData(username) {
-    // $('#myModal').modal('show');
-    confirm.confirm({
-      title: 'Confirm!',
-      content: 'Simple confirm!',
-      buttons: {
-        confirm: function () {
-          confirm.alert('Confirmed!');
-        },
-        cancel: function () {
-          confirm.alert('Canceled!');
-        },
-        somethingElse: {
-          text: 'Something else',
-          btnClass: 'btn-blue',
-          keys: ['enter', 'shift'],
-          action: function () {
-            confirm.alert('Something else?');
+    alertify.confirm('Delete', 'Are u sure want to delete?',
+      () => {
+        return this.userService.deleteUser(username).subscribe(data => {
+          if (data.data) {
+            this.getAllData();
+            alertify.success('data berhasil di hapus');
+          } else {
+            alertify.error('data gagal di hapus');
           }
-        }
-      }
-    });
-    // return this.userService.deleteUser(username).subscribe(data => {
-    //   console.log(data);
-    //   if (data.data) {
-    //    this.getAllData();
-    //   } else {
-    //     alert('data gagal di hapus');
-    //   }
-    // });
+        });
+      },
+      () => {
+      });
+
   }
 
 }

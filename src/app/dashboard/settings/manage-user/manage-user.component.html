@@ -1,28 +1,42 @@
 <br>
 <div class="container-fluid">
-  <md-card>
-    <md-chip-list>
-      <md-chip>One fish</md-chip>
-      <md-chip>Two fish</md-chip>
-      <md-chip color="primary" selected="true">Primary fish</md-chip>
-      <md-chip color="accent" selected="true">Accent fish</md-chip>
-    </md-chip-list>
-    <div class="row">
-      <div class="col-3">
-        <md-input-container>
-          <input mdInput placeholder="Username" id="username">
-        </md-input-container>
-      </div>
-      <div class="col-3">
-        <md-input-container>
-          <input mdInput placeholder="Password" id="password">
-        </md-input-container>
-      </div>
-    </div>
-    <div class="row">
-      <button md-button (click)="tes()">Click me!</button>
-    </div>
-  </md-card>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel title="Form Input">
+      <ng-template ngbPanelContent>
+        <md-card>
+          <form>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="selectRole">Role</label>
+              <select class="form-control" id="selectRole">
+                    <option value="" selected disabled>Select Role</option>
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                  </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </md-card>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+
+
   <br>
   <md-card>
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="dt" class="table table-bordered" cellspacing="0" width="100%">
@@ -59,25 +73,3 @@
     </table>
   </md-card>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure want to delete?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="confirmDelete()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-

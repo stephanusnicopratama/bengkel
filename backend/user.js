@@ -49,17 +49,27 @@ router.post('/checkuser', function (req, res) {
     });
 });
 
+router.post('/insertuser', function (req, res) {
+  connection.query('insert into user (username, password, email, nama, role) ' +
+    + 'values ("' + req.body.username + '", "' + req.body.password + '", "' + req.body.email + '", "' + req.body.nama + '", "' + req.body.role + '")',
+    function (error, rows, fields) {
+      if (!!error) {
+        throw error;
+      } else {
+        res.status(200).send({ status: 200, data: true });
+      }
+    });
+});
+
 router.delete('/deleteuser', function (req, res) {
   connection.query('delete from user where username = "' + req.body.username + '"',
     function (error, rows, fields) {
       if (!!error) {
         throw error;
       } else {
-        res.status(200).send({status: 200, data: true});
+        res.status(200).send({ status: 200, data: true });
       }
     });
 });
-
-
 
 module.exports = router;
